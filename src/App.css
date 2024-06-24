@@ -1,0 +1,34 @@
+/* @import "@bryntum/grid/grid.stockholm.css"; */
+@import "@bryntum/grid/grid.classic-light.css";  
+
+#root {
+  height: 100vh;
+  width: 1600px;
+  margin: 10px 40px;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inputs {
+  display: flex;
+  justify-content: center;
+}
+input {
+  padding: 10px 10px;
+  background: #ffff;
+  border-radius: 8px;
+  margin: 5px 30px;
+  outline: none;
+  border: 1px solid #C0c0c0;
+  font-size: 16px;
+  color: black;
+}
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 6px;
+  background: whitesmoke;
+}
