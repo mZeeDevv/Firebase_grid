@@ -1,6 +1,7 @@
 const data = []
 const gridConfig = {
     columns : [
+        {type : 'rownumber'},
         { text : 'Name', field : 'name', flex : 2 },
         { text : 'City', field : 'city', flex: 1 },
         { text : 'Class', field : 'class', flex : 1 },
