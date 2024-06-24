@@ -1,9 +1,11 @@
 import { BryntumGrid } from "@bryntum/grid-react";
 import { gridConfig } from "./Config";
 import { db } from "./firebase";
+import firebase from './assets/firebase.png'
+import Bryntum from './assets/B_logo.png'
 import './App.css';
 import { useEffect, useState } from "react";
-import { addDoc, collection, doc, getDoc, setDoc, query, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 
 function App() {
     const [showform, setshowform] = useState(true);
@@ -15,24 +17,32 @@ function App() {
     });
     const [databaseData, setdatabaseData] = useState(null);
 
-    useEffect(() => {
-        const data = [];
-        async function getData() {
-            const docRef = collection(db, "listings");
-            const docSnap = await getDocs(docRef);
-            docSnap.forEach((doc) => {
-                data.push({
-                    name: doc.data().name,
-                    class: doc.data().Class,
-                    email: doc.data().email,
-                    city: doc.data().city,
-                });
+
+
+
+
+
+
+    const getData = async () => {
+    const data = [];
+        const docRef = collection(db, "listings");
+        const docSnap = await getDocs(docRef);
+        docSnap.forEach((doc) => {
+            data.push({
+                name: doc.data().name,
+                class: doc.data().Class,
+                email: doc.data().email,
+                city: doc.data().city,
             });
-            console.log(data)
-            setdatabaseData(data);
-        }
-        getData();
+        });
+        console.log(data)
+        setdatabaseData(data);
         gridConfig.data = data;
+    }
+
+    useEffect(() => {
+        getData();
+        
     }, [])
     const { name, city, email, Class } = formData;
     const handleToggleForm = () => {
@@ -53,7 +63,7 @@ function App() {
     return (
         <>
             <div className="nav" id="nav">
-                <h2>Brytum Grid with <u>Firebase</u></h2>
+                <h2><img src={Bryntum} alt="" /> <span style={{margin: '10px'}}>X</span><img src={firebase} alt="" /></h2>
                 <button style={{ backgroundColor: 'green' }} onClick={handleToggleForm}>
                     {showform ? "Hide Form" : "Add Listing"}
                 </button>
@@ -68,6 +78,7 @@ function App() {
                             id="name"
                             placeholder="Name"
                             onChange={onChange}
+                            required
                         />
 
                         <input

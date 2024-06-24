@@ -1,5 +1,9 @@
 const data = []
 const gridConfig = {
+    features: {
+        filter : true,
+        
+      },
     columns : [
         {type : 'rownumber'},
         { text : 'Name', field : 'name', flex : 2 },
